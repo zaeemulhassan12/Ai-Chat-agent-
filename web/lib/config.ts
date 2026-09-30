@@ -3,10 +3,10 @@
  * The user is a placeholder until authentication is added.
  */
 export const APP_CONFIG = {
-  appName: "Assistant",
+  appName: "Zeo Chat",
   appDescription: "A professional full-stack AI assistant",
   user: {
-    name: "Rizwan",
+    name: "Zaeem ul Hassan",
     subtitle: "Workspace",
   },
 } as const;
