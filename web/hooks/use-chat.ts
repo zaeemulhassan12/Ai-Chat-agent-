@@ -80,12 +80,12 @@ export function useChat(selection: ModelSelection, onFinish?: () => void) {
         if (!buffer) return;
         const chunk = buffer;
         buffer = "";
-        patchMessage(convId, reply.id, (m) => ({ content: m.content + chunk }));
+        patchMessage(convId, reply.id, { content: reply.content + chunk });
       };
 
       try {
         await streamChat({
-          messages: history.filter((m) => !m.error).map(({ role, content }) => ({ role, content })),
+          messages: history.filter((m) => !m.error).map(({ role, content, image }) => ({ role, content, image })),
           selection: selectionRef.current,
           signal: ctrl.signal,
           onMeta: (meta) => patchMessage(convId, reply.id, { meta }),
@@ -118,10 +118,10 @@ export function useChat(selection: ModelSelection, onFinish?: () => void) {
   );
 
   const send = useCallback(
-    (text: string) => {
+    (text: string, image?: string) => {
       const content = text.trim();
-      if (!content || controller.current) return;
-      const userMsg: ChatMessage = { id: uid(), role: "user", content, createdAt: Date.now() };
+      if ((!content && !image) || controller.current) return;
+      const userMsg: ChatMessage = { id: uid(), role: "user", content, image, createdAt: Date.now() };
       const existing = conversations.find((c) => c.id === activeId);
       if (existing) {
         void generate(existing.id, [...existing.messages.filter((m) => !m.error), userMsg]);
@@ -129,7 +129,7 @@ export function useChat(selection: ModelSelection, onFinish?: () => void) {
       }
       const conv: Conversation = {
         id: uid(),
-        title: makeTitle(content),
+        title: makeTitle(content || (image ? "Image attachment" : "")),
         messages: [],
         createdAt: Date.now(),
         updatedAt: Date.now(),

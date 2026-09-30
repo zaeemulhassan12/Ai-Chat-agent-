@@ -94,6 +94,13 @@ export function Message({
     return (
       <div className="group flex flex-col items-end gap-1">
         <div className="max-w-[85%] rounded-3xl bg-secondary px-4 py-2.5 text-[15px] leading-7 break-words whitespace-pre-wrap">
+          {message.image && (
+            <img
+              src={message.image}
+              alt="Attached"
+              className="mb-2 max-h-60 w-full rounded-2xl object-cover"
+            />
+          )}
           {message.content}
         </div>
         <div className="flex items-center gap-1">

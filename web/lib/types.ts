@@ -49,6 +49,8 @@ export interface ChatMessage {
   feedback?: "up" | "down" | null;
   /** Spoken in voice mode (transcript) rather than typed. */
   voice?: boolean;
+  /** Optional image attachment as Base64 or URL. */
+  image?: string;
 }
 
 export interface Conversation {
