@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { CodeIcon, LightbulbIcon, MailIcon, ListChecksIcon } from "lucide-react";
 
-import { APP_CONFIG, firstNameOf } from "@/lib/config";
+import { APP_CONFIG } from "@/lib/config";
 
 const SUGGESTIONS = [
   {
@@ -45,7 +45,7 @@ export function EmptyState() {
   return (
     <div className="px-4 pb-6 text-center">
       <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-        {hello}, {firstNameOf(APP_CONFIG.user.name)}
+        {hello}, {APP_CONFIG.user.name}
       </h1>
       <p className="mt-2 text-muted-foreground">How can I help you today?</p>
     </div>

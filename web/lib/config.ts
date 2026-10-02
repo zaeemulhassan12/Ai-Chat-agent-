@@ -6,7 +6,7 @@ export const APP_CONFIG = {
   appName: "Zeo Chat",
   appDescription: "A professional full-stack AI assistant",
   user: {
-    name: "Zaeem ul Hassan",
+    name: "Zaeem Ul hassan",
     subtitle: "Workspace",
   },
 } as const;

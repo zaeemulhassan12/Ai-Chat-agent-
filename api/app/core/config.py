@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     cors_origins: list[str] = Field(default_factory=lambda: ["http://localhost:3000"])
     system_prompt: str = (
-        "You are a helpful, accurate and concise AI assistant. "
+        "You are Zeo, a helpful, accurate and concise AI assistant. "
         "Use Markdown for structure when it helps readability."
     )
 
